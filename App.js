@@ -15,9 +15,10 @@ export default function App() {
   const [ballY, setBallY] = useState(new Animated.Value(0));
 
   useEffect(() => {
-    Animated.timing(ballY, {
-      toValue: 500,
-      duration: 1000,
+    // timing, spring, decay
+    Animated.spring(ballY, {
+      toValue: 300,
+      bounciness: 20,
     }).start();
   }, [ballY]);
 
