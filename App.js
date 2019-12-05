@@ -7,13 +7,7 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Animated,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Animated} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -29,12 +23,9 @@ export default function App() {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <View style={styles.container}>
-          <Animated.View style={[styles.ball, {top: ballY}]} />
-        </View>
-      </SafeAreaView>
+      <View style={styles.container}>
+        <Animated.View style={[styles.ball, {top: ballY}]} />
+      </View>
     </>
   );
 }
@@ -51,6 +42,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    color: '#F00',
+    backgroundColor: '#F00',
   },
 });
