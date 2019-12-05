@@ -13,6 +13,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function App() {
   const [ballY, setBallY] = useState(new Animated.Value(0));
+  const [ballX, setBallX] = useState(Animated.divide(ballY, 2));
 
   useEffect(() => {
     // timing, spring, decay
@@ -25,7 +26,7 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>
-        <Animated.View style={[styles.ball, {top: ballY}]} />
+        <Animated.View style={[styles.ball, {top: ballY, left: ballX}]} />
       </View>
     </>
   );
