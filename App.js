@@ -46,28 +46,30 @@ export default function App() {
           duration: 500,
         }),
 
-        Animated.delay(200)
-      ]), {
-        iterations: 3
-      }
+        Animated.delay(200),
+      ]),
+      {
+        iterations: 3,
+      },
     ).start();
   }, [ballY, ballX]);
 
   return (
     <>
       <View style={styles.container}>
-        <Animated.View style={[
-          styles.ball,
-          {
-            top: ballY, left: ballX,
-            opacity: ballY.interpolate({
-              inputRange: [0, 300],
-              outputRange: [0, 0.3],
-              extrapolate: 'clamp',
-            })
-          }
-        ]} 
-
+        <Animated.View
+          style={[
+            styles.ball,
+            {
+              top: ballY,
+              left: ballX,
+              opacity: ballY.interpolate({
+                inputRange: [0, 300],
+                outputRange: [1, 0.3],
+                extrapolate: 'clamp',
+              }),
+            },
+          ]}
         />
       </View>
     </>
