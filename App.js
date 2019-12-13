@@ -13,15 +13,45 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function App() {
   const [ballY, setBallY] = useState(new Animated.Value(0));
-  const [ballX, setBallX] = useState(Animated.divide(ballY, 2));
+  const [ballX, setBallX] = useState(new Animated.Value(0));
 
   useEffect(() => {
     // timing, spring, decay
-    Animated.spring(ballY, {
-      toValue: 300,
-      bounciness: 20,
-    }).start();
-  }, [ballY]);
+
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(ballY, {
+          toValue: 200,
+          duration: 500,
+        }),
+
+        Animated.delay(200),
+
+        Animated.timing(ballX, {
+          toValue: 200,
+          duration: 500,
+        }),
+
+        Animated.delay(200),
+
+        Animated.timing(ballY, {
+          toValue: 0,
+          duration: 500,
+        }),
+
+        Animated.delay(200),
+
+        Animated.timing(ballX, {
+          toValue: 0,
+          duration: 500,
+        }),
+
+        Animated.delay(200)
+      ]), {
+        iterations: 3
+      }
+    ).start();
+  }, [ballY, ballX]);
 
   return (
     <>
