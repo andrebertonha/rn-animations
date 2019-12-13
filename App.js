@@ -56,7 +56,19 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>
-        <Animated.View style={[styles.ball, {top: ballY, left: ballX}]} />
+        <Animated.View style={[
+          styles.ball,
+          {
+            top: ballY, left: ballX,
+            opacity: ballY.interpolate({
+              inputRange: [0, 300],
+              outputRange: [0, 0.3],
+              extrapolate: 'clamp',
+            })
+          }
+        ]} 
+
+        />
       </View>
     </>
   );
